@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import { Box } from "components/Box";
 import { TableTd } from "./Statistics.styled";
 
@@ -25,4 +27,12 @@ export const Statistics = ({ good, bad, neutral, total, positivePercentage }) =>
             </tbody>
         </Box>
     );
-}
+};
+
+Statistics.propTypes = {
+    good: PropTypes.number,
+    bad: PropTypes.number,
+    neutral: PropTypes.number,
+    total: PropTypes.number,
+    positivePercentage: PropTypes.string,
+};
