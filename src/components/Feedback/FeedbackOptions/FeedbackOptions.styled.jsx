@@ -10,4 +10,10 @@ export const Button = styled.button`
     font-size: ${p => p.theme.fontSizes[1]}px;
     color: ${p => p.theme.colors.light};
     box-shadow: ${p => p.theme.shadows.buttonShadow};
+    cursor: pointer;
+    transition: scale cubic-bezier(0.01, 0.1, 0.1, 1) 250ms;
+    &:hover,
+    &:focus {
+        scale: 1.03;
+    }
 `;
