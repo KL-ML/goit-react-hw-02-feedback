@@ -1,41 +1,43 @@
 import React from 'react';
 import { Box } from "components/Box";
-import { FeedbackButtons } from './FeedbackButtons';
-import { FeedbackResults } from './FeedbackResults';
-import { MainHeader, SecondaryHeader } from './Feedback.styled';
+import { Statistics } from './Statistics';
+import { FeedbackOptions } from './FeedbackOptions';
+import { Section } from './Section';
+import { Notification } from './Notification';
 
-export class Feedback extends React.Component {
-    static propTypes = {
-        //
-    };
-    static defaultProps = {
-        //
-    };
-    state = {
-        good: 0,
-        neutral: 0,
-        bad: 0
-    }
-
-    render() {
-        return (
-            <Box
-                bg="background"
-                boxShadow="boxShadowSection"
-                borderRadius="normal"
-                overflow="hidden"
-                // display="flex"
-                // flexDirection="column"
-                // justifyContent="center"
-                // alignItems="center"
-                p={4}
-
-            >
-                <MainHeader>Please leave feedback</MainHeader>
-                <FeedbackButtons />
-                <SecondaryHeader>Statistics</SecondaryHeader>
-                <FeedbackResults />
-            </Box>
-        );
-    }
-}
+export const Feedback = ({
+    good,
+    bad,
+    neutral,
+    total,
+    positivePercentage,
+    options,
+    countFeedback
+}) => {
+    return (
+        <Box
+            bg="background"
+            boxShadow="boxShadowSection"
+            borderRadius="normal"
+            overflow="hidden"
+            p={4}
+        >
+            <Section title="Please leave feedback">
+                <FeedbackOptions
+                    options={options}
+                    onLeaveFeedback={countFeedback} />
+            </Section>
+            
+            <Section title="Statistics">
+                {total === 0
+                    ? (<Notification message="There is no feedback" />)
+                    : (<Statistics
+                        good={good}
+                        neutral={neutral}
+                        bad={bad}
+                        total={total}
+                        positivePercentage={positivePercentage} />)}
+            </Section>
+        </Box>
+    );
+};
