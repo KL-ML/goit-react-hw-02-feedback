@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { Box } from "components/Box";
 import { Statistics } from './Statistics';
 import { FeedbackOptions } from './FeedbackOptions';
@@ -40,4 +41,14 @@ export const Feedback = ({
             </Section>
         </Box>
     );
+};
+
+Feedback.propTypes = {
+    good: PropTypes.number,
+    bad: PropTypes.number,
+    neutral: PropTypes.number,
+    total: PropTypes.number,
+    positivePercentage: PropTypes.string,
+    options: PropTypes.array,
+    countFeedback: PropTypes.func,
 };
